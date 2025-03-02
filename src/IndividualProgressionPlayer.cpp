@@ -62,7 +62,7 @@ public:
         sIndividualProgression->CheckAdjustments(player);
     }
 
-    void OnEquip(Player* player, Item* /*it*/, uint8 /*bag*/, uint8 /*slot*/, bool /*update*/) override
+    void OnPlayerEquip(Player* player, Item* /*it*/, uint8 /*bag*/, uint8 /*slot*/, bool /*update*/) override
     {
         sIndividualProgression->CheckAdjustments(player);
     }
@@ -286,7 +286,7 @@ public:
         return (currentState == otherPlayerState);
     }
 
-    bool CanGroupAccept(Player* player, Group* group) override
+    bool OnPlayerCanGroupAccept(Player* player, Group* group) override
     {
         if (!sIndividualProgression->enabled || !sIndividualProgression->enforceGroupRules || isExcludedFromProgression(player))
         {
@@ -389,7 +389,7 @@ public:
     }
 }
 
-    bool CanEquipItem(Player* player, uint8 /*slot*/, uint16& /*dest*/, Item* pItem, bool /*swap*/, bool /*not_loading*/) override
+    bool OnPlayerCanEquipItem(Player* player, uint8 /*slot*/, uint16& /*dest*/, Item* pItem, bool /*swap*/, bool /*not_loading*/) override
     {
         if (sIndividualProgression->pvpGearRequirements)
         {
